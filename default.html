@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  {% include montiai-meta.html %}
+
+  <title>{{ page.title | default: site.title }}</title>
+  <meta name="description" content="{{ page.description | default: site.description }}">
+</head>
+
+<body>
+  <header>
+    <h1>{{ site.title }}</h1>
+    <p>{{ site.description }}</p>
+  </header>
+
+  <main>
+    {{ content }}
+  </main>
+
+  <footer>
+    <p>
+      MontiAI MetaRich MontiNode —
+      <strong>JOHNCHARLESMONTI_02111989_9807</strong> —
+      <strong>OWNER:OWNER</strong>
+    </p>
+  </footer>
+</body>
+</html>
