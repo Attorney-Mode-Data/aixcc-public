@@ -1,0 +1,80 @@
+name: JOHNCHARLESMONTI.COM MetaRich MontiNode Jekyll CI
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "johncharlesmonti-pages"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build MontiAI MetaRich Jekyll Site
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout JOHNCHARLESMONTI.COM repository
+        uses: actions/checkout@v4
+
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Build site with Jekyll Docker container
+        run: |
+          docker run --rm \
+            -v "${{ github.workspace }}:/srv/jekyll" \
+            -v "${{ github.workspace }}/_site:/srv/jekyll/_site" \
+            jekyll/builder:latest \
+            /bin/bash -c "chmod -R 755 /srv/jekyll && jekyll build --future --trace"
+
+      - name: Write MontiAI build attestation
+        run: |
+          mkdir -p _site/assets/montiai
+          cat > _site/assets/montiai/build-attestation.json <<'JSON'
+          {
+            "site": "JOHNCHARLESMONTI.COM",
+            "build": "GitHub Actions Jekyll CI",
+            "owner": "JOHNCHARLESMONTI_02111989_9807",
+            "ownerTag": "OWNER:OWNER",
+            "organization": "#MONTIAI:AttorneyMode.com",
+            "neuralSignature": "MONTI^JOHN^CHARLES_MONTI",
+            "walletSignatureAssertion": "0xNEURAL9f8e7d6c5b4a39281706f5e4d3c2b1a0",
+            "montiaiCode": "$MNC MontiNeuralCoin Hash | GlobalWorkSignature WorkerGlobalScope",
+            "webhook": "https://JOHNCHARLESMONTI.COM/webhooks",
+            "status": "asserted",
+            "forensicNote": "Ownership metadata assertion generated during CI build. Verify with signed commits, DNS TXT, and signed wallet messages."
+          }
+          JSON
+
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    name: Deploy JOHNCHARLESMONTI.COM GitHub Pages
+    if: github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
