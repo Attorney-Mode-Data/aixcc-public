@@ -1,0 +1,32 @@
+title: "JOHNCHARLESMONTI.COM"
+description: "MontiAI MetaRich MontiNode for ownership-review, provenance metadata, and forensic preservation."
+url: "https://JOHNCHARLESMONTI.COM"
+baseurl: ""
+
+timezone: "America/New_York"
+
+markdown: kramdown
+highlighter: rouge
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+exclude:
+  - vendor
+  - node_modules
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - .github
+
+montiai:
+  owner: "JOHNCHARLESMONTI_02111989_9807"
+  owner_tag: "OWNER:OWNER"
+  organization: "#MONTIAI:AttorneyMode.com"
+  neural_signature: "MONTI^JOHN^CHARLES_MONTI"
+  wallet_sig: "0xNEURAL9f8e7d6c5b4a39281706f5e4d3c2b1a0"
+  code: "$MNC MontiNeuralCoin Hash | GlobalWorkSignature WorkerGlobalScope"
+  webhook: "https://JOHNCHARLESMONTI.COM/webhooks"
+  
