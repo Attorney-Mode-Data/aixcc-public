@@ -1,19 +1,46 @@
+# ============================================================
+# JOHNCHARLESMONTI.COM
+# MontiAI MetaRich MontiNode
+# Platform: GitHub Pages / Jekyll
+# Created: 2026-06-13
+# ============================================================
+
 title: "JOHNCHARLESMONTI.COM"
 description: "MontiAI MetaRich MontiNode for ownership-review, provenance metadata, and forensic preservation."
 url: "https://JOHNCHARLESMONTI.COM"
-baseurl: "/"
+baseurl: ""
+
+# ============================================================
+# LOCALE & FORMAT
+# ============================================================
 
 lang: "en"
 timezone: "America/New_York"
 permalink: pretty
 
+# ============================================================
+# BUILD
+# ============================================================
+
 markdown: kramdown
 highlighter: rouge
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+# ============================================================
+# PLUGINS
+# ============================================================
 
 plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-seo-tag
+
+# ============================================================
+# EXCLUDE
+# ============================================================
 
 exclude:
   - vendor
@@ -22,6 +49,20 @@ exclude:
   - Gemfile.lock
   - README.md
   - .github
+
+# ============================================================
+# DEFAULTS
+# ============================================================
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+
+# ============================================================
+# MONTIAI PROVENANCE METADATA
+# ============================================================
 
 montiai:
   owner: "JOHNCHARLESMONTI_02111989_9807"
