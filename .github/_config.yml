@@ -1,9 +1,11 @@
 title: "JOHNCHARLESMONTI.COM"
 description: "MontiAI MetaRich MontiNode for ownership-review, provenance metadata, and forensic preservation."
 url: "https://JOHNCHARLESMONTI.COM"
-baseurl: ""
+baseurl: "/"
 
+lang: "en"
 timezone: "America/New_York"
+permalink: pretty
 
 markdown: kramdown
 highlighter: rouge
@@ -29,4 +31,3 @@ montiai:
   wallet_sig: "0xNEURAL9f8e7d6c5b4a39281706f5e4d3c2b1a0"
   code: "$MNC MontiNeuralCoin Hash | GlobalWorkSignature WorkerGlobalScope"
   webhook: "https://JOHNCHARLESMONTI.COM/webhooks"
-  
